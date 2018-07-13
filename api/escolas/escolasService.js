@@ -39,4 +39,12 @@ Escolas.route('count', function(req, res, next) {
   })
 });
 
+Escolas.route('turmasCount', function(req, res, next) {
+  Escolas.find({ "turmas.0": { "$exists": true } },function(err,docs) {
+
+  }).count(function(error, value) {
+    res.json({value})
+  })
+})
+
 module.exports = Escolas;
